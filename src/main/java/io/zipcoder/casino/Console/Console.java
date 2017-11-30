@@ -1,9 +1,11 @@
 package io.zipcoder.casino.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Console {
+public class Console extends ArrayList<String> {
 
     public static String getString(String prompt) {
         Scanner input = new Scanner(System.in);
@@ -13,7 +15,6 @@ public class Console {
     }
 
     public static double getDouble(String prompt) {
-
         do {
             try {
                 Scanner input = new Scanner(System.in);
@@ -30,5 +31,27 @@ public class Console {
         System.out.println(prompt);
     }
 
+
+    @Override
+    public boolean contains(Object object){
+        String string = (String)object;
+        for (String str: this){
+            if(str.equalsIgnoreCase(string)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String getValidString(String prompt,String... validInputs){
+        String input;
+        while(true){
+            input = getString(prompt);
+            if (Arrays.asList(validInputs).contains(input)){
+                return input;
+            }
+            print("Invalid input");
+        }
+    }
 
 }

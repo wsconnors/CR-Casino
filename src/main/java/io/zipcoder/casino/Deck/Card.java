@@ -7,6 +7,7 @@ public class Card
     public static String[] suitSymbols = {"♡", "♢", "♧", "♤"};
     public static String[] faceSymbols = {"A", "J", "Q", "K"};
     private Integer value;
+    private Enum goFishValue;
     private String topCardRepresentation;
     private String bottomCardRepresentation;
     private static String middleCardRepresentation="|     |\n";
@@ -36,6 +37,14 @@ public class Card
                 "|"+String.format("%2s%-3s", passedFaceRepresentation, passedSuitRepresentation)+"|\n";
         bottomCardRepresentation="|"+String.format("%4s%s", passedFaceRepresentation, passedSuitRepresentation)+"|\n"+
                 " ----- \n";
+    }
+
+    public String getGoFishValue() {
+        return goFishValue.toString();
+    }
+
+    public void setGoFishValue(GoFishValue goFishValue) {
+        this.goFishValue = goFishValue;
     }
 
     public Integer getValue(){
